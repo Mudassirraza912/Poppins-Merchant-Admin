@@ -91,12 +91,14 @@ export default class Verification extends Component {
                                     </p>
                                   </div>
                                   <div className="col-md-12 mb-2 text-center">
+                                  <NavLink to="/new-password" style={{color: "#fff"}}>
                                     <button
                                       type="submit"
                                       className="btn btn-primary w-50"
                                     >
-                                      <NavLink to="/new-password" style={{color: "#fff"}}>Continue</NavLink>
+                                     Continue
                                     </button>
+                                    </NavLink>
                                   </div>
                                   </div>
                                 <div className="text-center mt-4"></div>

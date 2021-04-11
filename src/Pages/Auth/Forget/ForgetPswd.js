@@ -47,12 +47,14 @@ export default class ForgetPswd extends Component {
                                 </div>
                                 <div className="row mt-5">
                                   <div className="col-md-12 mb-2 text-right">
+                                  <NavLink to="/verification" style={{color: "#fff"}}>
                                     <button
                                       // type="submit"
                                       className="btn btn-primary w-50"
                                     >
-                                      <NavLink to="/verification" style={{color: "#fff"}}>Submit</NavLink>
+                                      Submit
                                     </button>
+                                    </NavLink>
                                   </div>
                                   </div>
                                 <div className="text-center mt-4"></div>
