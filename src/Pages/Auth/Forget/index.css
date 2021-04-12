@@ -53,3 +53,7 @@ button.btn.btn-primary.w-50{
     font-size: 27px;
     color: #95969e;
 }
+.nav-link {
+    color: #fff;
+    bottom: 100px;
+}

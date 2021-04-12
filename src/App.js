@@ -29,16 +29,16 @@ useEffect(() => {
     <>
     <Router>
       <Switch>
-        <Route exact={true} path="/" component={Location}/>
+        <Route exact={true} path="/" component={Login}/>
+        <Route exact={true} path="/sign-up" component={Signup}/>
+        <Route exact={true} path="/forget-password" component={ForgetPswd}/>
+        <Route exact={true} path="/new-password" component={NewPassword}/>
+        <Route exact={true} path="/verification" component={Verification}/>
+        <Route exact={true} path="/Home" component={Location}/>
         <Route exact={true} path="/add-location" component={AddLocation}/>
         <Route exact={true} path="/menu-management" component={Menu}/>
         <Route exact={true} path="/add-menu" component={AddMenu}/>
         <Route exact={true} path="/edit-menu" component={EditMenu}/>
-        <Route exact={true} path="/sign-up" component={Signup}/>
-        <Route exact={true} path="/login" component={Login}/>
-        <Route exact={true} path="/forget-password" component={ForgetPswd}/>
-        <Route exact={true} path="/new-password" component={NewPassword}/>
-        <Route exact={true} path="/verification" component={Verification}/>
         <Route exact={true} path="/home" component={Index}/>
 
 

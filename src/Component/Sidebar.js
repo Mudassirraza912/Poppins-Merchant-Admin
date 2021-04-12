@@ -21,7 +21,7 @@ backgroundColor: "#6905db",
  }}>
   <div className="deznav-scroll">
     <ul className="metismenu" id="menu">
-      <li><NavLink className="" to="/" aria-expanded="false">
+      <li><NavLink className="" to="/add-location" aria-expanded="false">
           <i className="flaticon-381-layer-1" />
           <span className="nav-text">Add a Location</span>
         </NavLink>

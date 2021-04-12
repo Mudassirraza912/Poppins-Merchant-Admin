@@ -95,7 +95,7 @@ export default class Verification extends Component {
                                       type="submit"
                                       className="btn btn-primary w-50"
                                     >
-                                      Continue
+                                      <NavLink to="/new-password" style={{color: "#fff"}}>Continue</NavLink>
                                     </button>
                                   </div>
                                   </div>
