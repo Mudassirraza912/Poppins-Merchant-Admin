@@ -13,10 +13,10 @@ export default class Sidebar extends Component {
           <span className="nav-text">Add a Location</span>
         </NavLink>
       </li>
-      <li><a className="" href="javascript:void()" aria-expanded="false">
+      <li><NavLink className="" to="/menu-management" aria-expanded="false">
           <i className="flaticon-381-layer-1" />
           <span className="nav-text">Menu Management</span>
-        </a>
+        </NavLink>
       </li>
     </ul>
     
