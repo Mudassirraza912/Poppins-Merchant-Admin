@@ -1,0 +1,55 @@
+.authincation.h-100 {
+    margin-top: 3%;
+}
+.authincation-content {
+    background: transparent;
+    box-shadow: none;
+    border-radius: 5px;
+}
+.auth-form {
+    padding: 0px;
+}
+
+.img-div{
+    position: relative;
+    top: -1rem;
+    left: -6%;
+}
+
+.img-div-2{
+    position: fixed;
+    left: 89%;
+}
+input#val-username1 {
+    background: #F1F2FA;
+}
+.input-group-text {
+    background: #f1f2fa;
+    border: none;
+    min-width: 50px;
+    display: flex;
+    justify-content: center;
+    padding: 0.532rem 0.75rem;
+}
+.form-control {
+    background: #fff;
+    border: 0px solid #d7dae3;
+    color: #6e6e6e;
+    height: 56px;
+    border-radius: 0;
+}
+button.btn.btn-primary.w-50{
+    background: #6905DB;
+    border: #6905DB;
+    font-weight: 400;
+}
+.custom-control-input:checked ~ .custom-control-label::before {
+    color: #fff;
+    border-color: #6905db;
+    background-color: #6905db;
+}
+.sign-up-text{
+    font-weight: 900;
+    font-size: 27px;
+    color: #95969e;
+}
