@@ -16,6 +16,7 @@ import Login from './Pages/Auth/Login/Login';
 import ForgetPswd from './Pages/Auth/Forget/ForgetPswd';
 import NewPassword from './Pages/Auth/NewPassword/NewPassword';
 import Verification from './Pages/Auth/Verification/Verification';
+import Index from './Pages/Home/Index';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <Route exact={true} path="/forget-password" component={ForgetPswd}/>
         <Route exact={true} path="/new-password" component={NewPassword}/>
         <Route exact={true} path="/verification" component={Verification}/>
+        <Route exact={true} path="/home" component={Index}/>
 
 
       </Switch>

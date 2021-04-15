@@ -1,11 +1,15 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
-
+import background from "./Group101.png";
 export default class Sidebar extends Component {
     render() {
         return (
             <>
-             <div className="deznav">
+<div className="deznav" style={{ backgroundImage: `url(${background})`,
+backgroundSize: "cover",
+backgroundRepeat: "no-repeat",
+backgroundColor: "#6905db",
+left: "-2%", }}>
   <div className="deznav-scroll">
     <ul className="metismenu" id="menu">
       <li><NavLink className="" to="/" aria-expanded="false">
