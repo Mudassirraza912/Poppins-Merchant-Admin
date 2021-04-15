@@ -15,6 +15,7 @@ import Signup from './Pages/Auth/Register/Signup';
 import Login from './Pages/Auth/Login/Login';
 import ForgetPswd from './Pages/Auth/Forget/ForgetPswd';
 import NewPassword from './Pages/Auth/NewPassword/NewPassword';
+import Verification from './Pages/Auth/Verification/Verification';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route exact={true} path="/login" component={Login}/>
         <Route exact={true} path="/forget-password" component={ForgetPswd}/>
         <Route exact={true} path="/new-password" component={NewPassword}/>
+        <Route exact={true} path="/verification" component={Verification}/>
 
 
       </Switch>
