@@ -16,9 +16,15 @@ import Login from './Pages/Auth/Login/Login';
 import ForgetPswd from './Pages/Auth/Forget/ForgetPswd';
 import NewPassword from './Pages/Auth/NewPassword/NewPassword';
 import Verification from './Pages/Auth/Verification/Verification';
+import $ from 'jquery'
 import Index from './Pages/Home/Index';
+import { useEffect } from 'react';
 
 function App() {
+useEffect(() => {
+	
+  
+},)
   return (
     <>
     <Router>

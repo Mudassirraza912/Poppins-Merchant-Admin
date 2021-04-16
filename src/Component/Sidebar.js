@@ -1,15 +1,24 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 import background from "./Group101.png";
+import $ from 'jquery'
 export default class Sidebar extends Component {
-    render() {
+  componentDidMount(){
+    $(".nav-control").on('click', function() {
+      console.log('hello')
+			$('.deznav').toggleClass("menu-toggle");
+
+			$(".hamburger").addClass("is-active");
+		});
+  }  
+  render() {
         return (
             <>
 <div className="deznav" style={{ backgroundImage: `url(${background})`,
 backgroundSize: "cover",
 backgroundRepeat: "no-repeat",
 backgroundColor: "#6905db",
-left: "-2%", }}>
+ }}>
   <div className="deznav-scroll">
     <ul className="metismenu" id="menu">
       <li><NavLink className="" to="/" aria-expanded="false">

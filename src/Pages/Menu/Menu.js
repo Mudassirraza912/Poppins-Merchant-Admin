@@ -6,7 +6,7 @@ import Sidebar from '../../Component/Sidebar'
 export default class Menu extends Component {
     render() {
         return (
-            <div id="">
+            <div id="main-wrapper" className="show">
             <Header/>
             
            {/***********************************

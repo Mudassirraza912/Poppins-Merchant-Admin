@@ -7,7 +7,7 @@ import Dropzone from 'react-dropzone'
 export default class EditMenu extends Component {
     render() {
         return (
-            <div id="">
+            <div id="main-wrapper">
               <Header />
               <Sidebar />
               {/***********************************

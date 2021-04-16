@@ -7,7 +7,7 @@ import Sidebar from '../../Component/Sidebar'
 export default class Location extends Component {
     render() {
         return (
-            <div id="">
+            <div id="main-wrapper">
              <Header/>
              
             {/***********************************
