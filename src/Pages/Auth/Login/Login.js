@@ -78,10 +78,10 @@ export default class Login extends Component {
                                 <div className="row">
                                   <div className="col-md-12 mb-2 text-right">
                                     <button
-                                      type="submit"
+                                      // type="submit"
                                       className="btn btn-primary w-50"
                                     >
-                                      Sign up
+                                      <NavLink to="Home" style={{color: "#fff"}}>Login</NavLink>
                                     </button>
                                   </div>
                                   </div>

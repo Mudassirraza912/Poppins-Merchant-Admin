@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { NavLink } from 'react-router-dom'
 import './index.css'
 export default class ForgetPswd extends Component {
     render() {
@@ -47,10 +48,10 @@ export default class ForgetPswd extends Component {
                                 <div className="row mt-5">
                                   <div className="col-md-12 mb-2 text-right">
                                     <button
-                                      type="submit"
+                                      // type="submit"
                                       className="btn btn-primary w-50"
                                     >
-                                      Submit
+                                      <NavLink to="/verification" style={{color: "#fff"}}>Submit</NavLink>
                                     </button>
                                   </div>
                                   </div>
