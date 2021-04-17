@@ -64,13 +64,10 @@ export default class NewPassword extends Component {
                                 </div>
                                 <div className="row mt-5">
                                   <div className="col-md-12 mb-2 text-center">
-                                  <NavLink to="/" style={{color: "#fff"}}>
-                                    <button
-                                      // type="submit"
+                                  <NavLink to="/" 
                                       className="btn btn-primary w-50"
                                     >
                                      Continue
-                                    </button>
                                     </NavLink>
                                   </div>
                                   </div>
