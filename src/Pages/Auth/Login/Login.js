@@ -77,12 +77,11 @@ export default class Login extends Component {
                                 </div>
                                 <div className="row">
                                   <div className="col-md-12 mb-2 text-right">
-                                    <button
-                                      // type="submit"
+                                  <NavLink to="/Home" 
                                       className="btn btn-primary w-50"
                                     >
-                                      <NavLink to="Home" style={{color: "#fff"}}>Login</NavLink>
-                                    </button>
+                                      Login
+                                    </NavLink>
                                   </div>
                                   </div>
                                 <div className="text-center mt-4"></div>
