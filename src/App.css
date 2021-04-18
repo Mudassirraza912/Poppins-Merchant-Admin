@@ -117,6 +117,22 @@ i.fa.fa-edit ,i.fa.fa-trash {
   -ms-transition: all 0.5s;
   transition: all 0.5s;
 }
+.search-box{
+  margin:14% 3%;
+}
+.table-img{
+  display: inline-flex;
+    text-align: left;
+    font-size: 15px;
+    font-weight: 500;
+    margin: 0px;
+}
+.form-head .search-area {
+  max-width: 294px;
+  box-shadow: 0 15px 25px 0 rgb(0 0 0 / 6%);
+  border-radius: 0.75rem;
+  background: aliceblue;
+}
 
 @media(max-width:992px){
   .nav-header .brand-logo h2 span {

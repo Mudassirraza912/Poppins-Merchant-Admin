@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 import Footer from '../../Component/Footer'
 import Header from '../../Component/Header'
 import Sidebar from '../../Component/Sidebar'
-export default class Menu extends Component {
+export default class Menu2 extends Component {
     render() {
         return (
             <div id="main-wrapper" className="show">
@@ -23,7 +23,10 @@ export default class Menu extends Component {
                    </div>
                    <ul class="navbar-nav header-right">
                            <li class="nav-item dropdown notification_dropdown">
-                               <NavLink to="add-menu" className="btn btn-primary">Add Menu</NavLink>
+                               <NavLink to="menu-category" className="btn btn-primary">Add Category</NavLink>
+                           </li>
+                           <li class="nav-item dropdown notification_dropdown">
+                               <NavLink to="add-menu" className="btn btn-primary">Add Item</NavLink>
                            </li>
                        </ul>
                    </div>
@@ -40,7 +43,7 @@ export default class Menu extends Component {
 <div className="content-body">
  {/* row */}
  <div className="container-fluid">
- <div className="search-box form-head d-flex mb-3 mb-md-5 align-items-start">
+ <div className="search-box form-head d-flex mb-md-5 align-items-start">
   {/* <div className="mr-auto d-none d-lg-block">
     <h3 className="text-primary font-w600">Welcome to Mediqu!</h3>
     <p className="mb-0">Hospital Admin Dashboard Template</p>
@@ -61,26 +64,61 @@ export default class Menu extends Component {
            <div className="table-responsive">
            <table className="table">
                <tr>
-                   <td>ID</td>
-                   <td>Menu</td>
-                   <td>Edit</td>
-                   <td>Delete</td>
+                   <th>Products</th>
+                   <th>Category</th>
+                   <th>Price</th>
+                   <th>Prep Time</th>
+                   <th>Edit</th>
+                   <th>Delete</th>
                </tr>
                <tr>
-                   <td>1</td>
-                   <td>United States</td>
+                   <td>
+                    <div className="table-img">
+                    <img height={70} width={70} src="https://image.freepik.com/free-vector/today-s-best-deal-food-social-media-template_126460-82.jpg"/>
+                    <ul>
+                        <li>Chicken</li>
+                        <li>Lorem Ipsum</li>
+                        <li>20,March 2020, 3:03pm</li>
+                    </ul>
+                    </div>
+                   </td>
+                   <td>Burger</td>
+                   <td>20 USD</td>
+                   <td>20 mins</td>
                    <td><NavLink to="edit-menu"><i className="fa fa-edit"></i></NavLink></td>
                    <td><a href=""><i className="fa fa-trash"></i></a></td>
                </tr>
                <tr>
-                   <td>2</td>
-                   <td>Phoenix</td>
+                   <td>
+                    <div className="table-img">
+                    <img height={70} width={70} src="https://image.freepik.com/free-vector/today-s-best-deal-food-social-media-template_126460-82.jpg"/>
+                    <ul>
+                        <li>Chicken</li>
+                        <li>Lorem Ipsum</li>
+                        <li>20,March 2020, 3:03pm</li>
+                    </ul>
+                    </div>
+                   </td>
+                   <td>Burger</td>
+                   <td>20 USD</td>
+                   <td>20 mins</td>
                    <td><NavLink to="edit-menu"><i className="fa fa-edit"></i></NavLink></td>
                    <td><a href=""><i className="fa fa-trash"></i></a></td>
                </tr>
                <tr>
-                   <td>3</td>
-                   <td>3030</td>
+                   <td>
+                    <div className="table-img">
+                    <img height={70} width={70} src="https://image.freepik.com/free-vector/today-s-best-deal-food-social-media-template_126460-82.jpg"/>
+                    <ul>
+                        <li>Chicken</li>
+                        <li>Lorem Ipsum</li>
+                        <li>20,March 2020, 3:03pm</li>
+                    </ul>
+                    </div>
+                   </td>
+                   <td>Burger</td>
+                   <td>20 USD</td>
+                   <td>20 mins</td>
                    <td><NavLink to="edit-menu"><i className="fa fa-edit"></i></NavLink></td>
                    <td><a href=""><i className="fa fa-trash"></i></a></td>
                </tr>
