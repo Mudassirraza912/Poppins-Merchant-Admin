@@ -19,6 +19,8 @@ import Verification from './Pages/Auth/Verification/Verification';
 import $ from 'jquery'
 import Index from './Pages/Home/Index';
 import { useEffect } from 'react';
+import MenuCategory from './Pages/Menu/MenuCategory';
+import Menu2 from './Pages/Menu/Menu2';
 
 function App() {
 useEffect(() => {
@@ -40,6 +42,8 @@ useEffect(() => {
         <Route exact={true} path="/add-menu" component={AddMenu}/>
         <Route exact={true} path="/edit-menu" component={EditMenu}/>
         <Route exact={true} path="/home" component={Index}/>
+        <Route exact={true} path="/menu-category" component={MenuCategory}/>
+        <Route exact={true} path="/menu-managment-2" component={Menu2}/>
 
 
       </Switch>
