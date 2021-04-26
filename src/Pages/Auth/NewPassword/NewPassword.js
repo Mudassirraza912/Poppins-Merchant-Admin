@@ -1,7 +1,37 @@
 import React, { Component } from 'react'
 import {NavLink} from 'react-router-dom'
+import Modal from 'react-modal';
 import './index.css'
 export default class NewPassword extends Component {
+    constructor() {
+        super();
+        this.state = {
+            setIsOpen: false,
+            setIsOpen2:false,
+            setIsOpen3:false,
+            setIsOpen4:false
+        }
+    }
+    openModal() {
+        this.setState({ setIsOpen: true })
+
+    }
+    openModal02() {
+        this.setState({setIsOpen2:true})
+    }
+    openModal03() {
+        this.setState({setIsOpen3:true})
+    }
+    openModal04() {
+        this.setState({setIsOpen4:true})
+    }
+    closeModal() {
+        this.setState({ setIsOpen: false })
+        this.setState({ setIsOpen2: false })
+        this.setState({ setIsOpen3: false })
+        this.setState({ setIsOpen4: false })
+        
+    }
     render() {
         return (
             <>
@@ -64,11 +94,11 @@ export default class NewPassword extends Component {
                                 </div>
                                 <div className="row mt-5">
                                   <div className="col-md-12 mb-2 text-center">
-                                  <NavLink to="/" 
+                                  <button onClick={(e) => this.openModal()} type="button" 
                                       className="btn btn-primary w-50"
                                     >
                                      Continue
-                                    </NavLink>
+                                    </button>
                                   </div>
                                   </div>
                                 <div className="text-center mt-4"></div>
@@ -86,6 +116,37 @@ export default class NewPassword extends Component {
                   <circle id="Oval" cx="144.5" cy="144.5" r="144.5" fill="#ffbe00"/>
                </svg>
             </div>
+             <Modal className="modal-dialog modal-dialog-centered" role="document"
+                    isOpen={this.state.setIsOpen}
+                    contentLabel="Example Modal"
+                    // onRequestClose={(e) => this.closeModal()}
+                >
+                    <div >
+  <div className="modal-content">
+    <div className="modal-body">
+        <div className="container">
+            <div className="row">
+                <div className="col-md-12 text-center mb-4">
+                     <svg xmlns="http://www.w3.org/2000/svg" width="89" height="89" viewBox="0 0 289 289">
+                      <circle id="Oval" cx="144.5" cy="144.5" r="144.5" fill="#ffbe00"/>
+                     </svg>
+                </div>
+                <div className="col-md-12 text-center">
+                    <h3>Password changed</h3>
+                    <p style={{
+                      fontSize:"10px"
+                    }}>you may now continue using Poppins with your new password</p>
+                </div>
+                <div className="col-md-12 text-center mb-5">
+                    <NavLink to="/login" onClick={(e) => this.closeModal()} className="btn btn-primary w-50">Close</NavLink>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+                </Modal>
             </>
           );
     }

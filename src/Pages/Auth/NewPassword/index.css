@@ -1,0 +1,7 @@
+.modal-body {
+    padding: 3.875rem;
+}
+.ReactModal__Overlay.ReactModal__Overlay--after-open
+{
+    background-color: rgb(197 197 197 / 75%) !important;
+}
