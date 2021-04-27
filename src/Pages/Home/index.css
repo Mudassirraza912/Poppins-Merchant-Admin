@@ -1,3 +1,30 @@
+/* body{
+    background-image: url('./asset/background.jpg') !important;
+    background-size: cover;
+    background-repeat: no-repeat;
+} */
+.centerdiv{
+    margin: 50% auto;
+}
+.error-page .error-text {
+   font-size: 75px;
+    line-height: 1.6;
+    color: white;
+    font-weight: 500 !important;
+}
+.error-page p {
+    font-size: 16px;
+    color: white;
+}
+
+a.btn.btn-primary.btn-home {
+    background-color: #ffbe00;
+    border-color: #ffbe00;
+    color:black;
+    padding: 25px 74px;
+    border: inherit;
+    margin-bottom: 15px;
+}
 .authincation.h-100 {
     margin-top: 3%;
     /* background: #6905db; */
