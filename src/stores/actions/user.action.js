@@ -1,6 +1,9 @@
 import { postApi, getApi, postApiWithToken } from '../../api/fakeApiUser'
 import base_url from '../../constants/base_url'
 
+import swal from 'sweetalert';
+import { CustomModal } from '../../Component/CustomModal';
+
 export const fetchUserRequest = () => {
   return {
     type: 'FETCH_USER_REQUEST'
@@ -40,11 +43,11 @@ export const userRegister = (user) => {
       console.log("user Registration response", data)
 
       if (data.code == 200) {
-        alert("Success", "User Registerd Successfully")
+        swal("Success", "Owner Registerd Successfully", "success")
         return Promise.resolve({ status: true })
         // NavigationSer.navigate("SignIn")
       } else {
-        alert("error", data.message)
+        swal("error", data.message, "error")
         return Promise.resolve({ status: false })
       }
 
@@ -62,16 +65,17 @@ export const userLogin = (user) => {
       dispatch({ type: "USER_LOGIN_PROCESSING" })
       let { data } = await postApi(`${base_url}/owners/login_owner`, user)
 
-      console.log("user Registration response", data)
+      console.log("Owner Registration response", data)
 
       if (data.code == 200) {
-        alert("Success", "User Login Successfully")
-        dispatch({ type: "USER_LOGIN_PROCESSED" })
+        // swal("Success", "Owner Login Successfully", "success")
+        
+        dispatch({ type: "USER_LOGIN_PROCESSED", payload: data.payload })
         return Promise.resolve({ status: true })
         // NavigationSer.navigate("SignIn")
       } else {
-        alert("error", data.message)
-        dispatch({ type: "USER_LOGIN_PROCESSED" })
+        swal("error", data.message, "error")
+        dispatch({ type: "USER_LOGIN_PROCESSED", payload: null })
         return Promise.resolve({ status: false })
       }
 
@@ -95,13 +99,13 @@ export const forgetPass = (obj) => {
         dispatch({ type: "FETCHED_RESET_PASS_TOKEN", payload: payload })
         return Promise.resolve({ status: true, data: payload })
       } else {
-        alert("error", data.message)
+        swal("error", data.message, "error")
         dispatch({ type: "ERROR" })
         return Promise.resolve({ status: false, })
       }
     } catch ({message}) {
       dispatch({ type: "ERROR" })
-      alert("error", message)
+      swal("error", message, "error")
       return Promise.reject({ status: false, message })
     }
   }
@@ -118,20 +122,21 @@ export const changePass = (obj, authToken) => {
         let { data } = await postApiWithToken(`${base_url}/owners/change_password`, obj, authToken)
         console.log("data changePass", data)
         if (data.code == 200) {
-          alert("Alert", data.message)
+          // alert("Alert", data.message)
+          swal("Success", "Password changed successfull", "success")
           return Promise.resolve({ status: true })
         } else {
-          alert("Error", data.message)
+          swal("Error", data.message, "error")
           dispatch({ type: "ERROR" })
           return Promise.resolve({ status: false })
         }
       } catch ({message}) {
         dispatch({ type: "ERROR" })
-        alert("error", message)
+        swal("error", message, "error")
         return Promise.reject({ status: false, message })
       }
     }else {
-      alert("Error", data.message)
+      swal("Error", data.message, "error")
       return Promise.reject({ status: false })
     }
     

@@ -1,7 +1,8 @@
 const initialState = {
   users: [],
   isLoading: false,
-  resetPassToken: ''
+  resetPassToken: '',
+  user: null
 }
 
 export const userReducer = (state = initialState, action) => {
@@ -19,17 +20,31 @@ export const userReducer = (state = initialState, action) => {
         users: payload,
         isLoading: false
       }
+
+    case 'USER_LOGIN_PROCESSING':
+      return {
+        ...state,
+        isLoading: true
+      }
+
+    case 'USER_LOGIN_PROCESSED':
+      return {
+        ...state,
+        user: payload,
+        isLoading: false
+      }
+
     case 'ERROR':
       return {
         ...state,
         isLoading: false
       }
     case 'FETCHED_RESET_PASS_TOKEN':
-        return {
-          ...state,
-          isLoading: false,
-          resetPassToken: payload
-        }
+      return {
+        ...state,
+        isLoading: false,
+        resetPassToken: payload
+      }
 
     default:
       return state

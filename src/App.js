@@ -24,6 +24,8 @@ import Menu2 from './Pages/Menu/Menu2';
 import { Provider } from 'react-redux';
 import { store, persistore } from './stores/index'
 import { PersistGate } from "redux-persist/lib/integration/react";
+import PrivateRoute from './utils/PrivateRoute';
+import AuthRoutes from './utils/AuthRoutes';
 
 function App() {
   useEffect(() => {
@@ -33,22 +35,64 @@ function App() {
   return (
     <>
       <Provider store={store}>
-        <PersistGate persistor={persistore}>
+        <PersistGate loading={null} persistor={persistore}>
           <Router>
             <Switch>
-              <Route exact={true} path="/" component={Login} />
-              <Route exact={true} path="/sign-up" component={Signup} />
+              {/* Unauth Routs */}
+              <AuthRoutes exact={true} path="/">
+                <Login />
+              </AuthRoutes>
+              <AuthRoutes exact={true} path="/sign-up">
+                <Signup />
+              </AuthRoutes>
+              <AuthRoutes exact={true} path="/forget-password">
+                <ForgetPswd />
+              </AuthRoutes>
+              <AuthRoutes exact={true} path="/new-password">
+                <NewPassword />
+              </AuthRoutes>
+              <AuthRoutes exact={true} path="/verification">
+                <Verification />
+              </AuthRoutes>
+              {/* <Route exact={true} path="/" component={Login} /> */}
+              {/* <Route exact={true} path="/sign-up" component={Signup} />
               <Route exact={true} path="/forget-password" component={ForgetPswd} />
               <Route exact={true} path="/new-password" component={NewPassword} />
-              <Route exact={true} path="/verification" component={Verification} />
-              <Route exact={true} path="/Home" component={Location} />
-              <Route exact={true} path="/add-location" component={AddLocation} />
-              <Route exact={true} path="/menu-management" component={Menu} />
+              <Route exact={true} path="/verification" component={Verification} /> */}
+
+              {/* Auth Routes */}
+              <PrivateRoute exact={true} path="/Home">
+                <Location />
+              </PrivateRoute>
+              <PrivateRoute exact={true} path="/add-location">
+                <AddLocation />
+              </PrivateRoute>
+              <PrivateRoute exact={true} path="/menu-management">
+                <Menu />
+              </PrivateRoute>
+              <PrivateRoute exact={true} path="/add-menu">
+                <AddMenu />
+              </PrivateRoute>
+              <PrivateRoute exact={true} path="/edit-menu">
+                <EditMenu />
+              </PrivateRoute>
+              <PrivateRoute exact={true} path="/home">
+                <Index />
+              </PrivateRoute>
+              <PrivateRoute exact={true} path="/menu-category">
+                <MenuCategory />
+              </PrivateRoute>
+              <PrivateRoute exact={true} path="/menu-managment-2">
+                <Menu2 />
+              </PrivateRoute>
+              {/* <Route exact={true} path="/Home" component={Location} /> */}
+              {/* <Route exact={true} path="/add-location" component={AddLocation} /> */}
+              {/* <Route exact={true} path="/menu-management" component={Menu} />
               <Route exact={true} path="/add-menu" component={AddMenu} />
               <Route exact={true} path="/edit-menu" component={EditMenu} />
               <Route exact={true} path="/home" component={Index} />
               <Route exact={true} path="/menu-category" component={MenuCategory} />
-              <Route exact={true} path="/menu-managment-2" component={Menu2} />
+              <Route exact={true} path="/menu-managment-2" component={Menu2} /> */}
 
 
             </Switch>

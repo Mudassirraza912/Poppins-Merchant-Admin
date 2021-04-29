@@ -4,16 +4,21 @@ import { NavLink } from 'react-router-dom';
 import './login.css'
 import { userLogin } from '../../../stores/actions/user.action'
 import RenderError from '../../../utils/renderError'
+import { CustomModal } from '../../../Component/CustomModal';
 
 const Login = ({
   userLogin,
-  history
+  history,
+  authReducer
 }) => {
+  console.log("authReducer", authReducer);
 
   const [username, setUsername] = useState("")
   const [usernameError, setUsernameError] = useState("")
   const [password, setPassword] = useState("")
   const [passwordError, setPasswordError] = useState("")
+
+  const [modal, setModal] = useState(false)
 
   const validate = () => {
     let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
@@ -38,7 +43,8 @@ const Login = ({
       }
       let { status } = await userLogin(user)
       if (status) {
-        history.push("/Home")
+        // history.push("/Home")
+        setModal(true)
       }
 
       // alert("done")
@@ -68,6 +74,12 @@ const Login = ({
       </div>
       <div className="authincation h-100">
         <div className="container h-100">
+          <CustomModal
+            isVisible={modal}
+            setModalVisible={setModal}
+            title="Success"
+            description="Owner Login Successfully"
+          />
           <div className="row justify-content-center h-100 align-items-center">
             <div className="col-md-6">
               <div className="authincation-content">
@@ -171,7 +183,7 @@ const Login = ({
 
 
 const mapStateToProps = (state) => ({
-
+  authReducer: state.userReducer
 })
 
 const mapDispatchToProps = {
