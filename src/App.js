@@ -31,7 +31,8 @@ useEffect(() => {
     <>
     <Router>
       <Switch>
-        <Route exact={true} path="/" component={Login}/>
+        <Route exact={true} path="/" component={Index}/>
+        <Route exact={true} path="/login" component={Login}/>
         <Route exact={true} path="/sign-up" component={Signup}/>
         <Route exact={true} path="/forget-password" component={ForgetPswd}/>
         <Route exact={true} path="/new-password" component={NewPassword}/>
@@ -41,7 +42,6 @@ useEffect(() => {
         <Route exact={true} path="/menu-management" component={Menu}/>
         <Route exact={true} path="/add-menu" component={AddMenu}/>
         <Route exact={true} path="/edit-menu" component={EditMenu}/>
-        <Route exact={true} path="/home" component={Index}/>
         <Route exact={true} path="/menu-category" component={MenuCategory}/>
         <Route exact={true} path="/menu-managment-2" component={Menu2}/>
 
