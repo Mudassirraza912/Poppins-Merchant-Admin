@@ -34,6 +34,7 @@ function App() {
   })
   return (
     <>
+<<<<<<< HEAD
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistore}>
           <Router>
@@ -93,6 +94,23 @@ function App() {
               <Route exact={true} path="/home" component={Index} />
               <Route exact={true} path="/menu-category" component={MenuCategory} />
               <Route exact={true} path="/menu-managment-2" component={Menu2} /> */}
+=======
+    <Router>
+      <Switch>
+        <Route exact={true} path="/" component={Index}/>
+        <Route exact={true} path="/login" component={Login}/>
+        <Route exact={true} path="/sign-up" component={Signup}/>
+        <Route exact={true} path="/forget-password" component={ForgetPswd}/>
+        <Route exact={true} path="/new-password" component={NewPassword}/>
+        <Route exact={true} path="/verification" component={Verification}/>
+        <Route exact={true} path="/Home" component={Location}/>
+        <Route exact={true} path="/add-location" component={AddLocation}/>
+        <Route exact={true} path="/menu-management" component={Menu}/>
+        <Route exact={true} path="/add-menu" component={AddMenu}/>
+        <Route exact={true} path="/edit-menu" component={EditMenu}/>
+        <Route exact={true} path="/menu-category" component={MenuCategory}/>
+        <Route exact={true} path="/menu-managment-2" component={Menu2}/>
+>>>>>>> 9e0f2fc474bd392538a22c2d489071d4934d6e74
 
 
             </Switch>

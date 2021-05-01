@@ -1,11 +1,42 @@
 import React, { Component } from "react";
 import { CustomModal } from "../../Component/CustomModal";
+import {NavLink} from 'react-router-dom'
 
 import Footer from "../../Component/Footer";
 import Header from "../../Component/Header";
 import Sidebar from "../../Component/Sidebar";
-export default class AddLocation extends Component {
+import Modal from 'react-modal';
 
+export default class AddLocation extends Component {
+constructor() {
+        super();
+        this.state = {
+            setIsOpen: false,
+            setIsOpen2:false,
+            setIsOpen3:false,
+            setIsOpen4:false
+        }
+    }
+    openModal() {
+        this.setState({ setIsOpen: true })
+
+    }
+    openModal02() {
+        this.setState({setIsOpen2:true})
+    }
+    openModal03() {
+        this.setState({setIsOpen3:true})
+    }
+    openModal04() {
+        this.setState({setIsOpen4:true})
+    }
+    closeModal() {
+        this.setState({ setIsOpen: false })
+        this.setState({ setIsOpen2: false })
+        this.setState({ setIsOpen3: false })
+        this.setState({ setIsOpen4: false })
+        
+    }
   render() {
 
     return (
@@ -152,7 +183,7 @@ export default class AddLocation extends Component {
                           </div>
                         </div>
                         <div className="col-md-12 mb-2">
-                          <select className="form-control">
+                          <select onChange={(e) => this.openModal()} className="form-control">
                             <option value="">Chain</option>
                             <option>Yes</option>
                             <option>No</option>
@@ -440,6 +471,32 @@ export default class AddLocation extends Component {
   ************************************/}
 
         <Footer />
+          <Modal className="modal-dialog modal-dialog-centered" role="document"
+                    isOpen={this.state.setIsOpen}
+                    contentLabel="Example Modal"
+                    // onRequestClose={(e) => this.closeModal()}
+                >
+                    <div >
+  <div className="modal-content">
+    <div className="container-fluid">
+     
+            <div className="row">
+                <div style={{marginBottom:"0px",padding: "24px 27px 9px",}} className="col-md-12 text-left border mb-4">
+                    <a href=""> Mc Donalds</a>
+                </div>
+                <div style={{marginBottom:"0px",padding: "24px 27px 9px",}} className="col-md-12 text-left border mb-4">
+                    <a href=""> Mc Donalds</a>
+                </div>
+                <div style={{marginBottom:"0px",padding: "24px 27px 9px",}} className="col-md-12 text-left border mb-4">
+                    <a href=""> Mc Donalds</a>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+
+                </Modal>
       </div>
     );
   }
