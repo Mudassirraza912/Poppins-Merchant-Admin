@@ -5,11 +5,37 @@ import Header from '../../Component/Header'
 import Sidebar from '../../Component/Sidebar'
 import Dropzone from 'react-dropzone'
 import Switch from "react-switch";
+import './Menu.css'
 export default class AddMenu extends Component {
   constructor(props){
     super(props);
-    this.state = { fields: [""] ,checked: false };
+    this.state = { fields: [""] ,checked: false , fields2:[""] , checked2:false };
   }
+//Type Clone Functions
+handleChange2 = (checked2) =>{
+  this.setState({ checked2 });
+}
+onClickButtonAdder2 = (event) =>  {
+  event.preventDefault();
+  this.setState({
+    fields2: ["", ...this.state.fields2]
+  });
+}
+
+onClickFormGroupButton2 = (index) => {
+  let fields2 = [...this.state.fields2];
+  fields2.splice(index,1);
+  this.setState({ fields2 });
+}
+
+onChangeFormGroupInput2(index, event) {
+  let fields2 = [...this.state.fields2];
+  fields2[index] = event.target.value;
+  this.setState({ fields2});
+}
+
+
+  //Value Clone Functions
   handleChange = (checked) =>{
     this.setState({ checked });
   }
@@ -83,27 +109,89 @@ export default class AddMenu extends Component {
                                   />
                               </div>
                               <div className="col-md-12 mb-2">
-    
-                              {this.state.fields.map((x, i) => {
+                              <label>Customization Name</label>
+                                  <input
+                                    type="text"
+                                    className="form-control"
+                                    id="val-username1"
+                                    name="val-username"
+                                    placeholder=""
+                                  />
+                              </div>
+                              {this.state.fields2.map((x, i) => {
                                   return (
-                                    <div>
-                                       <label>Customization {i == 0 ?"":i}</label>
-                                       <input
+                                    <div className="col-md-12 mb-2">    
+                                        <div className="col-md-12 mb-2">
+                                    <label>Customization Type</label>
+                                        <select
+                                          className="form-control"
+                                          id="val-username1"
+                                          name="val-username"
+                                          onChange={this.onChangeFormGroupInput2.bind(this, i)}
+                                        >
+                                        <option>Type 1</option>
+                                        </select>
+                                    </div>
+                                        <div className="col-md-12 mb-2">
+                                    <label></label>
+                                        <input
                                           type="text"
                                           className="form-control"
                                           id="val-username1"
                                           name="val-username"
-                                          placeholder="Enter a username.."
-                                          onChange={this.onChangeFormGroupInput.bind(this, i)}
-                                        />             
-                                      <div className="btn-box">
-                                        {this.state.fields.length !== 1 && <a style={{fontSize:"10px",cursor:"pointer"}} className="mr-2" onClick={this.onClickFormGroupButton.bind(i)}> - Remove</a>}
-                                        {this.state.fields.length - 1 === i && <a style={{fontSize:"10px",cursor:"pointer"}} onClick={this.onClickButtonAdder} >+ Add Another Field</a>}
-                                      </div>
+                                          placeholder="Customization Value"
+                                          onChange={this.onChangeFormGroupInput2.bind(this, i)}
+                                        />
+                                        <div className="short-inp">
+                                              <input placeholder="$$" type="text" onChange={this.onChangeFormGroupInput2.bind(this, i)}  className="form-control"  />
+                                              </div> 
                                     </div>
-                                  );
-                                })}
-                              </div>
+                                        <div className="col-md-12 mb-2">
+                                    <label></label>
+                                        <input
+                                          type="text"
+                                          className="form-control"
+                                          id="val-username1"
+                                          name="val-username"
+                                          placeholder="Customization Value"
+                                          onChange={this.onChangeFormGroupInput2.bind(this, i)}
+                                        />
+                                        <div className="short-inp">
+                                              <input placeholder="$$" onChange={this.onChangeFormGroupInput2.bind(this, i)} type="text" className="form-control"  />
+                                              </div> 
+                                    </div>
+                                        <div className="col-md-12 mb-2">
+
+                                    {this.state.fields.map((x, i) => {
+                                        return (
+                                          <div>
+                                            <label></label>
+                                            <input
+                                                type="text"
+                                                className="form-control"
+                                                id="val-username1"
+                                                name="val-username"
+                                                placeholder="Customization Value"
+                                                onChange={this.onChangeFormGroupInput.bind(this, i)}
+                                              />
+                                              <div className="short-inp">
+                                              <input placeholder="$$" onChange={this.onChangeFormGroupInput.bind(this, i)} type="text" className="form-control"  />
+                                              </div>             
+                                            <div className="btn-box">
+                                              {this.state.fields.length !== 1 && <a style={{fontSize:"10px",cursor:"pointer"}} className="mr-2" onClick={this.onClickFormGroupButton.bind(i)}> - Remove</a>}
+                                              {this.state.fields.length - 1 === i && <a style={{fontSize:"10px",cursor:"pointer"}} onClick={this.onClickButtonAdder} >+ Add Another Value</a>} <br></br>
+                                              {this.state.fields2.length !== 1 && <a style={{fontSize:"10px",cursor:"pointer"}} className="mr-2" onClick={this.onClickFormGroupButton2.bind(i)}> - Remove</a>}
+                                              {this.state.fields2.length - 1 === i && <a style={{fontSize:"10px",cursor:"pointer"}} onClick={this.onClickButtonAdder2} >+ Add Another Field</a>}
+                                            
+                                            </div>
+                                          </div>
+                                        );
+                                      })}
+                                    </div>
+                                    </div>
+                                  );  
+                                })
+                              }
                               <div className="col-md-12 mb-2">
                               <label>Price</label>
                                   <input

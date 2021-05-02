@@ -23,7 +23,7 @@ export default class Menu extends Component {
                    </div>
                    <ul class="navbar-nav header-right">
                            <li class="nav-item dropdown notification_dropdown">
-                               <NavLink to="add-menu" className="btn btn-primary">Add Menu</NavLink>
+                               <NavLink to="menu-managment-2" className="btn btn-primary">Add Menu</NavLink>
                            </li>
                        </ul>
                    </div>
