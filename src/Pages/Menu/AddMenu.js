@@ -9,7 +9,13 @@ import './Menu.css'
 export default class AddMenu extends Component {
   constructor(props){
     super(props);
-    this.state = { fields: [""] ,checked: false , fields2:[""] , checked2:false };
+    this.state = { 
+      fields: [""] ,
+      checked: false , 
+      fields2:[""] , 
+      checked2:false,
+      show:false,
+    };
   }
 //Type Clone Functions
 handleChange2 = (checked2) =>{
@@ -57,6 +63,18 @@ onChangeFormGroupInput2(index, event) {
     fields[index] = event.target.value;
     this.setState({ fields });
   }
+
+  handledropdown = (val) =>{
+    if(val.target.options.selectedIndex == 1){
+    this.setState({
+      show : true
+    }) 
+  }else{
+    this.setState({
+      show : false
+    })
+    }
+  }
   
     render() {
       const isFormGroupDeletionAllowed =
@@ -100,16 +118,20 @@ onChangeFormGroupInput2(index, event) {
                               </div>
                               <div className="col-md-12 mb-2">
                               <label>Item Customization</label>
-                                  <input
+                                  <select
                                     type="text"
                                     className="form-control"
-                                    id="val-username1"
-                                    name="val-username"
-                                    placeholder="Enter a username.."
-                                  />
+                                    
+                                    onChange={(event)=>{this.handledropdown(event)}}
+                                  >
+                                    <option>Optional</option>
+                                    <option value="true">Yes</option>
+                                    <option value="false">No</option>
+                                  </select>
                               </div>
-                              <div className="col-md-12 mb-2">
-                              <label>Customization Name</label>
+                             
+                              <div style={{display: this.state.show ? "block":"none"}} className="col-md-12 mb-2">
+                             <label>Customization Name</label>
                                   <input
                                     type="text"
                                     className="form-control"
@@ -120,7 +142,7 @@ onChangeFormGroupInput2(index, event) {
                               </div>
                               {this.state.fields2.map((x, i) => {
                                   return (
-                                    <div className="col-md-12 mb-2">    
+                                    <div style={{display: this.state.show ? "block":"none"}}  className="col-md-12 mb-2">    
                                         <div className="col-md-12 mb-2">
                                     <label>Customization Type</label>
                                         <select
@@ -192,6 +214,8 @@ onChangeFormGroupInput2(index, event) {
                                   );  
                                 })
                               }
+                             
+                            
                               <div className="col-md-12 mb-2">
                               <label>Price</label>
                                   <input
