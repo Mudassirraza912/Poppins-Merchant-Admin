@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { CustomModal } from "../../Component/CustomModal";
 import {NavLink} from 'react-router-dom'
 
 import Footer from "../../Component/Footer";
@@ -37,7 +38,7 @@ constructor() {
         
     }
   render() {
-    
+
     return (
       <div id="main-wrapper">
         <Header />
@@ -84,7 +85,7 @@ constructor() {
                               className="form-control"
                               id="val-username1"
                               name="val-username"
-                              placeholder="Enter a username.."
+                              placeholder="Restaurant Name"
                             />
                           </div>
                         </div>
@@ -115,7 +116,7 @@ constructor() {
                               className="form-control"
                               id="val-username1"
                               name="val-username"
-                              placeholder="Enter a username.."
+                              placeholder="Email"
                             />
                           </div>
                         </div>
@@ -146,40 +147,40 @@ constructor() {
                               className="form-control"
                               id="val-username1"
                               name="val-username"
-                              placeholder="Enter a username.."
+                              placeholder="Type"
                             />
                           </div>
                         </div>
                         <div className="col-md-12 mb-2">
-                        <div className="input-group">
-                          <div className="input-group-prepend">
-                            <span className="input-group-text">
-                              {" "}
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="24.576"
-                                height="24.577"
-                                viewBox="0 0 24.576 24.577"
-                              >
-                                <path
-                                  id="Icon_awesome-location-arrow"
-                                  data-name="Icon awesome-location-arrow"
-                                  d="M21.337.169,1.38,9.38A2.327,2.327,0,0,0,2.3,13.832h8.444v8.444A2.327,2.327,0,0,0,15.2,23.2L24.408,3.24A2.4,2.4,0,0,0,21.337.169Z"
-                                  transform="translate(0 0)"
-                                  fill="#6a6d78"
-                                  opacity="0.39"
-                                />
-                              </svg>{" "}
-                            </span>
+                          <div className="input-group">
+                            <div className="input-group-prepend">
+                              <span className="input-group-text">
+                                {" "}
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width="24.576"
+                                  height="24.577"
+                                  viewBox="0 0 24.576 24.577"
+                                >
+                                  <path
+                                    id="Icon_awesome-location-arrow"
+                                    data-name="Icon awesome-location-arrow"
+                                    d="M21.337.169,1.38,9.38A2.327,2.327,0,0,0,2.3,13.832h8.444v8.444A2.327,2.327,0,0,0,15.2,23.2L24.408,3.24A2.4,2.4,0,0,0,21.337.169Z"
+                                    transform="translate(0 0)"
+                                    fill="#6a6d78"
+                                    opacity="0.39"
+                                  />
+                                </svg>{" "}
+                              </span>
+                            </div>
+                            <input
+                              type="text"
+                              className="form-control"
+                              id="val-username1"
+                              name="val-username"
+                              placeholder="Store Address"
+                            />
                           </div>
-                          <input
-                            type="text"
-                            className="form-control"
-                            id="val-username1"
-                            name="val-username"
-                            placeholder="Enter a username.."
-                          />
-                        </div>
                         </div>
                         <div className="col-md-12 mb-2">
                           <select onChange={(e) => this.openModal()} className="form-control">
@@ -214,7 +215,7 @@ constructor() {
                               className="form-control"
                               id="val-username1"
                               name="val-username"
-                              placeholder="Enter a username.."
+                              placeholder="Username"
                             />
                           </div>
                         </div>
@@ -244,7 +245,7 @@ constructor() {
                               className="form-control"
                               id="val-username1"
                               name="val-username"
-                              placeholder="Enter a username.."
+                              placeholder="Password"
                             />
                           </div>
                         </div>
@@ -338,6 +339,7 @@ constructor() {
                             <textarea
                               rows="10"
                               className="form-control"
+                              placeholder="Description"
                             ></textarea>
                           </div>
                         </div>
@@ -381,7 +383,7 @@ constructor() {
                               className="form-control"
                               id="val-username1"
                               name="val-username"
-                              placeholder="Enter a username.."
+                              placeholder="Banks"
                             />
                           </div>
                         </div>
@@ -412,7 +414,7 @@ constructor() {
                               className="form-control"
                               id="val-username1"
                               name="val-username"
-                              placeholder="Enter a username.."
+                              placeholder="Routing Number"
                             />
                           </div>
                         </div>
@@ -443,12 +445,16 @@ constructor() {
                               className="form-control"
                               id="val-username1"
                               name="val-username"
-                              placeholder="Enter a username.."
+                              placeholder="Account Number"
                             />
                           </div>
                         </div>
                         <div className="col-md-12 mb-2 text-left mt-4">
-                          <button className="btn btn-primary w-50">
+                          <button onClick={() => {
+                            CustomModal({
+                              isVisible: true
+                            })
+                          }} className="btn btn-primary w-50">
                             Proceed
                           </button>
                         </div>
