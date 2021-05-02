@@ -1,14 +1,14 @@
 import React, { Component, useState } from "react";
 import { connect } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { userRegister } from "../../../stores/actions/user.action";
 import RenderError from "../../../utils/renderError";
 import img from "./asset/sign-up.png";
 import './signup.css'
 
+
 const Signup = ({
   userRegister,
-  history
 }) => {
   const [firstName, setFirstName] = useState("")
   const [firstNameError, setFirstNameError] = useState("")
@@ -23,6 +23,7 @@ const Signup = ({
   const [phoneNumberError, setPhoneNumberError] = useState("")
   const [password, setPassword] = useState("")
   const [passwordError, setPasswordError] = useState("")
+  const history = useHistory()
 
   const validate = () => {
     let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
@@ -65,7 +66,7 @@ const Signup = ({
         setPassword("")
         setEmail("")
         setPhoneNumber("")
-        history.push("/")
+        history.push("/login")
       }
 
       // alert("done")
@@ -198,7 +199,7 @@ const Signup = ({
                                 </span>
                               </div>
                               <input
-                                type="text"
+                                type="password"
                                 className="form-control"
                                 id="val-username1"
                                 name="val-username"
@@ -244,7 +245,7 @@ const Signup = ({
                         <div className="text-center mt-4"></div>
                       </form>
                       <div className="d-flex justify-content-center">
-                        <NavLink to="/">Already have an account? Sign in</NavLink>
+                        <NavLink to="/login">Already have an account? Sign in</NavLink>
                       </div>
                     </div>
                   </div>

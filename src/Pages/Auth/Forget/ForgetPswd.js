@@ -1,17 +1,16 @@
 import React, { Component, useState } from 'react'
 import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom'
+import { NavLink, useHistory } from 'react-router-dom'
 import RenderError from '../../../utils/renderError';
 import { forgetPass } from '../../../stores/actions/user.action'
 import './index.css'
 
 const ForgetPswd = ({
-  history,
   forgetPass
 }) => {
   const [email, setemail] = useState("")
   const [emailError, setemailError] = useState("")
-
+  const history = useHistory()
   const validate = () => {
     let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
     setemailError(email ? (reg.test(email) ? "" : "invalid email") : "Email is required")

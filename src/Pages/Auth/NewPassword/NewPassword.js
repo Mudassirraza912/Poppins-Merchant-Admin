@@ -1,18 +1,18 @@
 import React, { Component, useState } from 'react'
 import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom'
+import { NavLink, useHistory } from 'react-router-dom'
 import { changePass } from '../../../stores/actions/user.action';
 import RenderError from '../../../utils/renderError';
 import './index.css'
 
-const NewPassword = ({ location, changePass, history }) => {
+const NewPassword = ({ location, changePass,  }) => {
   // console.log(location)
   const { detail } = location
   const [password, setPassword] = useState("")
   const [passwordError, setPasswordError] = useState("")
   const [confirmPass, setconfirmPass] = useState("")
   const [confirmPassError, setconfirmPassError] = useState("")
-
+  const history = useHistory()
   const validate = () => {
     let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
     setPasswordError(password ? "" : "Password is required")
@@ -36,7 +36,7 @@ const NewPassword = ({ location, changePass, history }) => {
       }
       let { status } = await changePass(user, detail.token)
       if (status) {
-        history.push("/")
+        history.push("/login")
       }
 
       // alert("done")

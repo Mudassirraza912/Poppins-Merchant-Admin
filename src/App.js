@@ -26,10 +26,9 @@ import { store, persistore } from './stores/index'
 import { PersistGate } from "redux-persist/lib/integration/react";
 import PrivateRoute from './utils/PrivateRoute';
 import AuthRoutes from './utils/AuthRoutes';
-
+import Home from './Pages/Home/Index'
 function App() {
   useEffect(() => {
-
 
   })
   return (
@@ -40,6 +39,9 @@ function App() {
             <Switch>
               {/* Unauth Routs */}
               <AuthRoutes exact={true} path="/">
+                <Home />
+              </AuthRoutes>
+              <AuthRoutes exact={true} path="/login">
                 <Login />
               </AuthRoutes>
               <AuthRoutes exact={true} path="/sign-up">
