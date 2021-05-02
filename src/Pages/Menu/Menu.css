@@ -1,0 +1,9 @@
+.short-inp{
+    float: right;
+    position: relative;
+    right: -25%;
+    width: 21%;
+    top: -57px;}
+    .short-inp input.form-control {
+        background: #f1f2fa;
+    }
