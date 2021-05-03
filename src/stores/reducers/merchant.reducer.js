@@ -6,16 +6,16 @@ const initialState = {
 export const merchantReducer = (state = initialState, action) => {
     const { payload } = action
     switch (action.type) {
-        case 'FETCHING':
+        case 'GET_ALL_MERCHANTS_PROCESSING':
             return {
                 ...state,
                 isLoading: true
             }
 
-        case 'FETCH_USER_SUCCESS':
+        case 'GET_ALL_MERCHANTS_PROCESSED':
             return {
                 ...state,
-                users: payload,
+                merchants: payload,
                 isLoading: false
             }
 
