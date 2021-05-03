@@ -44,7 +44,7 @@ const Login = ({
       let { status } = await userLogin(user)
       if (status) {
         // history.push("/Home")
-        setModal(true)
+        // setModal(true)
       }
 
       // alert("done")
@@ -149,13 +149,19 @@ const Login = ({
                         </div>
                         <div className="row">
                           <div className="col-md-12 mb-2 text-right">
-                            <NavLink
+                            {/* <NavLink
                               to=""
+                              onClick={handleSubmit}
+                              className="btn btn-primary w-50"
+                            > */}
+                            <button
+                            type="button"
                               onClick={handleSubmit}
                               className="btn btn-primary w-50"
                             >
                               Login
-                              </NavLink>
+                              </button>
+                            {/* </NavLink> */}
                           </div>
                         </div>
                         <div className="text-center mt-4"></div>
