@@ -1,104 +1,135 @@
-import React, { Component } from 'react'
+import React, { Component, useEffect } from 'react'
+import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import Footer from '../../Component/Footer'
 import Header from '../../Component/Header'
 import Sidebar from '../../Component/Sidebar'
-export default class Menu extends Component {
-    render() {
-        return (
-            <div id="main-wrapper" className="show">
-            <Header/>
-            
-           {/***********************************
+import { getAllMenu } from '../../stores/actions/menu.action'
+
+const Menu = ({
+    user,
+    menu,
+    getAllMenu
+}) => {
+
+    useEffect(() => {
+        getAllMenu(user.id)
+    }, [])
+
+    return (
+        <div id="main-wrapper" className="show">
+            <Header />
+
+            {/***********************************
                 Header start
            ************************************/}
-           <div className="header">
-               <div className="header-content">
-               <nav className="navbar navbar-expand">
-                   <div className="collapse navbar-collapse justify-content-between">
-                   <div className="header-left">
-                       <div className="dashboard_bar">
-                           Menu Managment
+            <div className="header">
+                <div className="header-content">
+                    <nav className="navbar navbar-expand">
+                        <div className="collapse navbar-collapse justify-content-between">
+                            <div className="header-left">
+                                <div className="dashboard_bar">
+                                    Menu Managment
                        </div>
-                   </div>
-                   <ul class="navbar-nav header-right">
-                           <li class="nav-item dropdown notification_dropdown">
-                               <NavLink to="menu-managment-2" className="btn btn-primary">Add Menu</NavLink>
-                           </li>
-                       </ul>
-                   </div>
-               </nav>
-               </div>
-           </div>
-           {/***********************************
+                            </div>
+                            <ul class="navbar-nav header-right">
+                                <li class="nav-item dropdown notification_dropdown">
+                                    <NavLink to="/add-menu" className="btn btn-primary">Add Menu</NavLink>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+            {/***********************************
                 Header end ti-comment-alt
            ************************************/}
-            <Sidebar/>
-   {/***********************************
+            <Sidebar />
+            {/***********************************
      Content body start
  ************************************/}
-<div className="content-body">
- {/* row */}
- <div className="container-fluid">
- <div className="search-box form-head d-flex mb-3 mb-md-5 align-items-start">
-  {/* <div className="mr-auto d-none d-lg-block">
+            <div className="content-body">
+                {/* row */}
+                <div className="container-fluid">
+                    <div className="search-box form-head d-flex mb-3 mb-md-5 align-items-start">
+                        {/* <div className="mr-auto d-none d-lg-block">
     <h3 className="text-primary font-w600">Welcome to Mediqu!</h3>
     <p className="mb-0">Hospital Admin Dashboard Template</p>
   </div> */}
-  <div className="input-group search-area d-inline-flex">
-  <div className="input-group-append">
-      <a href="javascript:void(0)" className="input-group-text"><i className="flaticon-381-search-2" /></a>
-    </div>
-    <input type="text" className="form-control" placeholder="Search here" />
-  </div>
-</div>
+                        <div className="input-group search-area d-inline-flex">
+                            <div className="input-group-append">
+                                <a href="javascript:void(0)" className="input-group-text"><i className="flaticon-381-search-2" /></a>
+                            </div>
+                            <input type="text" className="form-control" placeholder="Search here" />
+                        </div>
+                    </div>
 
-   <div className="row">
-    
-     <div className="col-xl-6 col-xxl-12">
-       <div className="card">
-           <div className="card-body">
-           <div className="table-responsive">
-           <table className="table">
-               <tr>
-                   <td>ID</td>
-                   <td>Menu</td>
-                   <td>Edit</td>
-                   <td>Delete</td>
-               </tr>
-               <tr>
-                   <td>1</td>
-                   <td>United States</td>
-                   <td><NavLink to="edit-menu"><i className="fa fa-edit"></i></NavLink></td>
-                   <td><a href=""><i className="fa fa-trash"></i></a></td>
-               </tr>
-               <tr>
-                   <td>2</td>
-                   <td>Phoenix</td>
-                   <td><NavLink to="edit-menu"><i className="fa fa-edit"></i></NavLink></td>
-                   <td><a href=""><i className="fa fa-trash"></i></a></td>
-               </tr>
-               <tr>
-                   <td>3</td>
-                   <td>3030</td>
-                   <td><NavLink to="edit-menu"><i className="fa fa-edit"></i></NavLink></td>
-                   <td><a href=""><i className="fa fa-trash"></i></a></td>
-               </tr>
-           </table>
-       </div>
-           </div>
-       </div>
-     </div>
-   </div>
- </div>
-</div>
-{/***********************************
+                    <div className="row">
+
+                        <div className="col-xl-6 col-xxl-12">
+                            <div className="card">
+                                <div className="card-body">
+                                    <div className="table-responsive">
+                                        <table className="table">
+                                            <tr>
+                                                <td>ID</td>
+                                                <td>Menu</td>
+                                                <td>Edit</td>
+                                                <td>Delete</td>
+                                            </tr>
+
+                                            {menu.length > 0 ? menu.map((value, index) => {
+                                                return <tr>
+                                                    <td>{index + 1}</td>
+                                                    <td><NavLink to={`items/${value.id}`}>{value.description}</NavLink></td>
+                                                    <td><NavLink to="edit-menu"><i className="fa fa-edit"></i></NavLink></td>
+                                                    <td><a href=""><i className="fa fa-trash"></i></a></td>
+                                                </tr>
+                                            }) : <p className="center">No menu found</p>}
+                                            {/* <tr>
+                                                <td>1</td>
+                                                <td>United States</td>
+                                                <td><NavLink to="edit-menu"><i className="fa fa-edit"></i></NavLink></td>
+                                                <td><a href=""><i className="fa fa-trash"></i></a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>Phoenix</td>
+                                                <td><NavLink to="edit-menu"><i className="fa fa-edit"></i></NavLink></td>
+                                                <td><a href=""><i className="fa fa-trash"></i></a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>3</td>
+                                                <td>3030</td>
+                                                <td><NavLink to="edit-menu"><i className="fa fa-edit"></i></NavLink></td>
+                                                <td><a href=""><i className="fa fa-trash"></i></a></td>
+                                            </tr> */}
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {/***********************************
      Content body end
  ************************************/}
 
 
-            <Footer/>   
-           </div>
-        )
-    }
+            <Footer />
+        </div>
+    )
 }
+
+
+const mapStateToProps = (state) => ({
+    user: state.userReducer.user,
+    menu: state.menuReducer.menu
+})
+
+const mapDispatchToProps = {
+    getAllMenu
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Menu)
