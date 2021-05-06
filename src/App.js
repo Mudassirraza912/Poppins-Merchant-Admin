@@ -27,6 +27,7 @@ import { PersistGate } from "redux-persist/lib/integration/react";
 import PrivateRoute from './utils/PrivateRoute';
 import AuthRoutes from './utils/AuthRoutes';
 import Home from './Pages/Home/Index'
+import AddBaseMenu from './Pages/Menu/AddBaseMenu';
 function App() {
   useEffect(() => {
 
@@ -72,19 +73,22 @@ function App() {
               <PrivateRoute exact={true} path="/menu-management">
                 <Menu />
               </PrivateRoute>
-              <PrivateRoute exact={true} path="/add-menu">
+              <PrivateRoute exact={true} path="/items/:menuId/add-item">
                 <AddMenu />
               </PrivateRoute>
-              <PrivateRoute exact={true} path="/edit-menu">
+              <PrivateRoute exact={true} path="/add-menu">
+                <AddBaseMenu />
+              </PrivateRoute>
+              <PrivateRoute exact={true} path="/items/:menuId/edit-item">
                 <EditMenu />
               </PrivateRoute>
               <PrivateRoute exact={true} path="/home">
                 <Index />
               </PrivateRoute>
-              <PrivateRoute exact={true} path="/menu-category">
+              <PrivateRoute exact={true} path="/items/:menuId/menu-category">
                 <MenuCategory />
               </PrivateRoute>
-              <PrivateRoute exact={true} path="/menu-managment-2">
+              <PrivateRoute exact={true} path="/items/:menuId">
                 <Menu2 />
               </PrivateRoute>
               {/* <Route exact={true} path="/Home" component={Location} /> */}
