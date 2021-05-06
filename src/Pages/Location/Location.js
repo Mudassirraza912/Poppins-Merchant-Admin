@@ -15,7 +15,7 @@ const Location = ({
 
 
     useEffect(() => {
-        getAllMarchants(user.auth_token)
+        getAllMarchants(user.auth_token, user.id)
     }, [])
 
 

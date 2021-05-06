@@ -1,12 +1,12 @@
-import { getApiWithToken, postApi, postApiWithToken } from "../../api/fakeApiUser";
+import { getApi, getApiWithToken, postApi, postApiWithToken } from "../../api/fakeApiUser";
 import base_url from "../../constants/base_url";
 import swal from 'sweetalert';
 
-export const getAllMarchants = (token) => {
+export const getAllMarchants = (token, ownerId) => {
   return async (dispatch) => {
     dispatch({ type: "GET_ALL_MERCHANTS_PROCESSING" })
     try {
-      const { data } = await getApiWithToken(`${base_url}/merchants/get_all_merchants`, "", token)
+      const { data } = await getApi(`${base_url}/merchants/get_merchants/${ownerId}`, "")
 
       if (data.code == 200) {
         dispatch({ type: "GET_ALL_MERCHANTS_PROCESSED", payload: data.payload })
