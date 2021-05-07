@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { Component, useEffect, useState } from "react";
 import { CustomModal } from "../../Component/CustomModal";
 import { NavLink, useHistory } from 'react-router-dom'
 
@@ -9,10 +9,13 @@ import Modal from 'react-modal';
 import { connect } from "react-redux";
 import RenderError from "../../utils/renderError";
 import { marchantRegister } from "../../stores/actions/merchant.action";
+import { getAllMenu } from "../../stores/actions/menu.action";
 
 const AddLocation = ({
   user,
-  marchantRegister
+  marchantRegister,
+  getAllMenu,
+  allMenu
 }) => {
   // constructor() {
   //         super();
@@ -37,7 +40,7 @@ const AddLocation = ({
   const [emailError, setEmailError] = useState("")
   const [phoneNumber, setPhoneNumber] = useState("")
   const [phoneNumberError, setPhoneNumberError] = useState("")
-  const [type, setType] = useState("")
+  const [type, setType] = useState("testType")
   const [typeError, setTypeError] = useState("")
   const [address, setAddress] = useState("")
   const [addressError, setAddressError] = useState("")
@@ -51,8 +54,12 @@ const AddLocation = ({
   const [menuError, setmenuError] = useState("")
   const [description, setdescription] = useState("")
   const [descriptionError, setdescriptionError] = useState("")
-  
+
   const history = useHistory()
+
+  useEffect(() => {
+    getAllMenu(user.id)
+  }, [])
 
   const validate = () => {
     let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
@@ -104,29 +111,6 @@ const AddLocation = ({
   function openModal() {
     // this.setState({ setIsOpen: true })
     setIsOpenVal(true)
-  }
-  function openModal02() {
-    // this.setState({ setIsOpen2: true })
-    setIsOpen2val(true)
-  }
-  function openModal03() {
-    // this.setState({ setIsOpen3: true })
-    setIsOpen3val(true)
-  }
-  function openModal04() {
-    // this.setState({ setIsOpen4: true })
-    setIsOpen4val(true)
-  }
-  function closeModal() {
-    setIsOpenVal(false)
-    setIsOpen2val(false)
-    setIsOpen3val(false)
-    setIsOpen4val(false)
-    // this.setState({ setIsOpen: false })
-    // this.setState({ setIsOpen2: false })
-    // this.setState({ setIsOpen3: false })
-    // this.setState({ setIsOpen4: false })
-
   }
 
   const handleChange = (text, func) => {
@@ -269,12 +253,13 @@ const AddLocation = ({
                             name="val-username"
                             placeholder="Type"
                             value={type}
+                            disabled
                             onChange={e => handleChange(e.target.value, setType)}
                           />
                         </div>
                         <RenderError errorText={typeError} />
                       </div>
-                      <div className="col-md-12 mb-2">
+                      {/* <div className="col-md-12 mb-2">
                         <div className="input-group">
                           <div className="input-group-prepend">
                             <span className="input-group-text">
@@ -307,14 +292,14 @@ const AddLocation = ({
                           />
                         </div>
                         <RenderError errorText={addressError} />
-                      </div>
-                      <div className="col-md-12 mb-2">
+                      </div> */}
+                      {/* <div className="col-md-12 mb-2">
                         <select onChange={(e) => openModal()} className="form-control">
                           <option value="">Chain</option>
                           <option>Yes</option>
                           <option>No</option>
                         </select>
-                      </div>
+                      </div> */}
                       <div className="col-md-12 mb-2">
                         <div className="input-group">
                           <div className="input-group-prepend">
@@ -436,8 +421,11 @@ const AddLocation = ({
                           </div>
                           <select className="form-control">
                             <option value="">Select Menu</option>
-                            <option>Yes</option>
-                            <option>No</option>
+                            {allMenu.map((value, index) => {
+                              return (
+                                <option value={value.id}>{value.description}</option>
+                              )
+                            })}
                           </select>
                         </div>
                       </div>
@@ -487,13 +475,13 @@ const AddLocation = ({
               <div className="card">
                 <div className="card-body">
                   <div className="text-center mb-5">
-                    <h2>Bank Info</h2>
+                    <h2>Address Info</h2>
                   </div>
                   <div className="container">
                     <div className="row">
                       <div className="col-md-12 mb-2">
                         <div className="input-group">
-                          <div className="input-group-prepend">
+                          {/* <div className="input-group-prepend">
                             <span className="input-group-text">
                               {" "}
                               <svg
@@ -512,19 +500,19 @@ const AddLocation = ({
                                 />
                               </svg>{" "}
                             </span>
-                          </div>
+                          </div> */}
                           <input
                             type="text"
                             className="form-control"
                             id="val-username1"
                             name="val-username"
-                            placeholder="Banks"
+                            placeholder="Street"
                           />
                         </div>
                       </div>
                       <div className="col-md-12 mb-2">
                         <div className="input-group">
-                          <div className="input-group-prepend">
+                          {/* <div className="input-group-prepend">
                             <span className="input-group-text">
                               {" "}
                               <svg
@@ -543,19 +531,19 @@ const AddLocation = ({
                                 />
                               </svg>{" "}
                             </span>
-                          </div>
+                          </div> */}
                           <input
                             type="text"
                             className="form-control"
                             id="val-username1"
                             name="val-username"
-                            placeholder="Routing Number"
+                            placeholder="City"
                           />
                         </div>
                       </div>
                       <div className="col-md-12 mb-2">
                         <div className="input-group">
-                          <div className="input-group-prepend">
+                          {/* <div className="input-group-prepend">
                             <span className="input-group-text">
                               {" "}
                               <svg
@@ -574,19 +562,81 @@ const AddLocation = ({
                                 />
                               </svg>{" "}
                             </span>
-                          </div>
+                          </div> */}
                           <input
                             type="text"
                             className="form-control"
                             id="val-username1"
                             name="val-username"
-                            placeholder="Account Number"
+                            placeholder="State"
+                          />
+                        </div>
+                      </div>
+                      <div className="col-md-12 mb-2">
+                        <div className="input-group">
+                          {/* <div className="input-group-prepend">
+                            <span className="input-group-text">
+                              {" "}
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="25.794"
+                                height="24.924"
+                                viewBox="0 0 25.794 24.924"
+                              >
+                                <path
+                                  id="Icon_metro-list-numbered"
+                                  data-name="Icon metro-list-numbered"
+                                  d="M13.1,22.179h17.2v3.116H13.1Zm0-9.347h17.2v3.116H13.1Zm0-9.347h17.2V6.6H13.1ZM7.938,1.928V8.159H6.218V3.486H4.5V1.928Zm-1.72,12.8v1.217H9.657v1.558H4.5V13.952l3.439-1.46V11.275H4.5V9.717H9.657v3.554Zm3.439,4.333v7.789H4.5V25.295H7.938V23.737H4.5V22.179H7.938V20.621H4.5V19.063Z"
+                                  transform="translate(-4.499 -1.928)"
+                                  fill="#6a6d78"
+                                  opacity="0.39"
+                                />
+                              </svg>{" "}
+                            </span>
+                          </div> */}
+                          <input
+                            type="text"
+                            className="form-control"
+                            id="val-username1"
+                            name="val-username"
+                            placeholder="Country"
+                          />
+                        </div>
+                      </div>
+                      <div className="col-md-12 mb-2">
+                        <div className="input-group">
+                          {/* <div className="input-group-prepend">
+                            <span className="input-group-text">
+                              {" "}
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="25.794"
+                                height="24.924"
+                                viewBox="0 0 25.794 24.924"
+                              >
+                                <path
+                                  id="Icon_metro-list-numbered"
+                                  data-name="Icon metro-list-numbered"
+                                  d="M13.1,22.179h17.2v3.116H13.1Zm0-9.347h17.2v3.116H13.1Zm0-9.347h17.2V6.6H13.1ZM7.938,1.928V8.159H6.218V3.486H4.5V1.928Zm-1.72,12.8v1.217H9.657v1.558H4.5V13.952l3.439-1.46V11.275H4.5V9.717H9.657v3.554Zm3.439,4.333v7.789H4.5V25.295H7.938V23.737H4.5V22.179H7.938V20.621H4.5V19.063Z"
+                                  transform="translate(-4.499 -1.928)"
+                                  fill="#6a6d78"
+                                  opacity="0.39"
+                                />
+                              </svg>{" "}
+                            </span>
+                          </div> */}
+                          <input
+                            type="text"
+                            className="form-control"
+                            id="val-username1"
+                            name="val-username"
+                            placeholder="Zip Code"
                           />
                         </div>
                       </div>
                       <div className="col-md-12 mb-2 text-left mt-4">
                         <button onClick={() => {
-                         handleSubmit()
+                          handleSubmit()
                         }} className="btn btn-primary w-50">
                           Proceed
                           </button>
@@ -636,11 +686,13 @@ const AddLocation = ({
 
 const mapStateToProps = (state) => ({
   user: state.userReducer.user,
-  merchants: state.merchantReducer.merchants
+  merchants: state.merchantReducer.merchants,
+  allMenu: state.menuReducer.menu
 })
 
 const mapDispatchToProps = {
-  marchantRegister
+  marchantRegister,
+  getAllMenu
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddLocation)
